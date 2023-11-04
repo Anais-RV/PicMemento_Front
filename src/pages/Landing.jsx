@@ -99,8 +99,9 @@ import { useState } from 'react';
 import { toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 import Card from '../components/Card/Card';
+import './Landing.css';
 
-function ImageUploader() {
+function Landing() {
   const [selectedFile, setSelectedFile] = useState(null);
   const [title, setTitle] = useState('');
   const [imageList, setImageList] = useState([]);
@@ -135,20 +136,28 @@ function ImageUploader() {
   };
 
   return (
-    <div>
-      <div>
-        <input
-          type="file"
-          onChange={handleFileChange}
-          required
-        />
-        <input
-          type="text"
-          placeholder="Título de la imagen"
-          value={title}
-          onChange={handleTitleChange}
-        />
-        <button onClick={handleUpload}>Subir</button>
+    <div className="image-uploader-container">
+      <div className="upload-form">
+        <div className="form-row">
+          <label className="file-upload-label" htmlFor="fileInput">
+            Subir imagen
+          </label>
+          <input
+            type="file"
+            id="fileInput"
+            onChange={handleFileChange}
+            required
+          />
+        </div>
+        <div className="form-row">
+          <input
+            type="text"
+            placeholder="Título de la imagen"
+            value={title}
+            onChange={handleTitleChange}
+          />
+          <button onClick={handleUpload}>Subir</button>
+        </div>
       </div>
       <div className="card-container">
         {imageList.map((image, index) => (
@@ -159,4 +168,5 @@ function ImageUploader() {
   );
 }
 
-export default ImageUploader;
+export default Landing;
+
