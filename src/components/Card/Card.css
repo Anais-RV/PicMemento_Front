@@ -1,0 +1,23 @@
+.card {
+    background: #f5f5f5;
+    border: 1px solid #e0e0e0;
+    border-radius: 5px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    padding: 16px;
+    text-align: center;
+    transition: transform 0.2s;
+    width: 300px;
+    margin: 16px;
+}
+
+.cardImage {
+    max-width: 100%;
+    height: auto;
+    border-radius: 5px;
+}
+
+.imageText {
+    font-size: 1.2em;
+    margin: 8px 0;
+}
+

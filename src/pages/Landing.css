@@ -1,0 +1,134 @@
+/* .welcomeText
+{
+	color: #183153;
+	text-align: center;
+	margin-top: 10px;
+    margin-bottom: 30px;
+}
+
+.greetingRegistration
+{
+	font-size: 30px;
+	font-weight: 500;
+}
+
+.textRegistration
+{
+	font-weight: 500;
+    font-size: 13px;
+}
+
+.registrationForm
+{
+	background-color: #E4E2F9;
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+	margin-bottom: 5%;
+}
+#regis {
+	cursor: pointer;
+	text-align: center;
+	font-size: 0.8rem;
+	display: flex;
+	align-items: center;
+	justify-content: center;
+}
+.formGroup
+{
+	display: flex;
+	flex-direction: column;
+}
+
+.identifier
+{
+	color:#183153;
+	font-size: 12px;
+	font-weight: 500;
+}
+	
+.registrationBox
+{
+    border-radius: 6px;
+	border: 3px solid #183153;
+    margin: 5px;
+    background-color: #E4E2F9;
+	color: #183153;
+	width: 159px;
+	height: 31px;
+}
+
+.registrationButton
+{
+	background-color: #183153;
+	color: #E4E2F9;
+	border-radius: 8px;
+	width: 196px;
+    height: 35px;
+	margin: 20px;
+	cursor: pointer;} */
+
+/* Estilo para el contenedor principal */
+.image-uploader-container {
+    text-align: center;
+    padding: 20px;
+  }
+  
+  /* Estilo para el formulario de carga de imágenes */
+  .upload-form {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
+  
+  .upload-form input[type="file"] {
+    display: none;
+  }
+  
+  .upload-form input[type="text"] {
+    width: 100%;
+    padding: 10px;
+    margin: 10px 0;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    font-size: 16px;
+  }
+  
+  .upload-form button {
+    padding: 10px 20px;
+    background-color: #007bff;
+    color: #fff;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 16px;
+  }
+  
+  /* Estilo para el contenedor de las tarjetas */
+  .card-container {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    margin-top: 20px;
+  }
+  
+  /* Estilo para las tarjetas (puedes personalizarlo según tus preferencias) */
+  .card {
+    width: 200px;
+    margin: 10px;
+    padding: 10px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    box-shadow: 0 0 5px rgba(0, 0, 0, 0.2);
+  }
+  
+  .card img {
+    max-width: 100%;
+    height: auto;
+  }
+  
+  .card h3 {
+    margin-top: 10px;
+    font-size: 18px;
+    font-weight: bold;
+  }
