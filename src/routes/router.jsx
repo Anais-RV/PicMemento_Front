@@ -1,8 +1,5 @@
 import {BrowserRouter, Routes, Route} from 'react-router-dom'
-import Layout from '../layouts/Homelayout/Layout';
-
-
-
+import Layout from '../layouts/Layout';
 
 const RouterItem = () => {
     return(

@@ -1,0 +1,16 @@
+.footerContainer{
+    position: absolute;
+    bottom: 0;
+    width: 100%;
+    background-color: palevioletred;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+.footer{
+    font-weight: 700;
+    color: white;
+    font-size: 1.2em;
+    text-align: center;
+    padding: 10px;
+}
