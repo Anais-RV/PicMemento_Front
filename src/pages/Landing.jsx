@@ -140,7 +140,7 @@ function Landing() {
       <div className="upload-form">
         <div className="form-row">
           <label className="file-upload-label" htmlFor="fileInput">
-            Subir imagen
+            Elige tu recuerdo
           </label>
           <input
             type="file"
@@ -152,11 +152,11 @@ function Landing() {
         <div className="form-row">
           <input
             type="text"
-            placeholder="Título de la imagen"
+            placeholder="Escoge un título"
             value={title}
             onChange={handleTitleChange}
           />
-          <button onClick={handleUpload}>Subir</button>
+          <button onClick={handleUpload}>Guardar</button>
         </div>
       </div>
       <div className="card-container">

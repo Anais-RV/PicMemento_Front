@@ -1,15 +1,16 @@
 .footerContainer{
-    position: absolute;
+    position: fixed;
     bottom: 0;
+    height: 70px;
     width: 100%;
-    background-color: palevioletred;
+    background-color: #b2f1ed;
     display: flex;
     align-items: center;
     justify-content: center;
 }
 .footer{
     font-weight: 700;
-    color: white;
+    color: black;
     font-size: 1.2em;
     text-align: center;
     padding: 10px;

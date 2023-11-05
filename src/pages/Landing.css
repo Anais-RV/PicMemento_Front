@@ -1,158 +1,65 @@
-/* .welcomeText
-{
-	color: #183153;
-	text-align: center;
-	margin-top: 10px;
-    margin-bottom: 30px;
+.image-uploader-container {
+    margin-top: 10vh;
+    text-align: center;
+    padding: 20px;
+}
+.upload-form {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+.form-row {
+    display: flex;
+    align-items: center;
+    margin-bottom: 10px;
+}
+.file-upload-label {
+    margin-top: 5%;
+    background-color: #f1b1b5;
+    color: black;
+    font-family:' Playpen Sans', cursive; 
+    padding: 10px 20px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 16px;
+    transition: background-color 0.3s;
+}
+.file-upload-label:hover {
+    background-color: #f0898f;
+}
+.upload-form input[type="file"] {
+    display: none;
 }
 
-.greetingRegistration
-{
-	font-size: 30px;
-	font-weight: 500;
+.upload-form input[type="text"] {
+    width: 100%;
+    padding: 10px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    font-size: 16px;
+    flex: 1; /* Para que ocupe el espacio restante */
+    margin-right: 10px;
 }
-
-.textRegistration
-{
-	font-weight: 500;
-    font-size: 13px;
+.upload-form button {
+    padding: 10px 20px;
+    background-color: #f1b1b5;
+    font-family:' Playpen Sans', cursive;
+    color: black;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 16px;
+    transition: background-color 0.3s;
+    
 }
-
-.registrationForm
-{
-	background-color: #E4E2F9;
-	display: flex;
-	flex-direction: column;
-	align-items: center;
-	margin-bottom: 5%;
+.upload-form button:hover {
+    background-color: #f0898f;
 }
-#regis {
-	cursor: pointer;
-	text-align: center;
-	font-size: 0.8rem;
-	display: flex;
-	align-items: center;
-	justify-content: center;
+.card-container {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    margin-top: 5vh;
+    margin-bottom: 5vh;
 }
-.formGroup
-{
-	display: flex;
-	flex-direction: column;
-}
-
-.identifier
-{
-	color:#183153;
-	font-size: 12px;
-	font-weight: 500;
-}
-	
-.registrationBox
-{
-    border-radius: 6px;
-	border: 3px solid #183153;
-    margin: 5px;
-    background-color: #E4E2F9;
-	color: #183153;
-	width: 159px;
-	height: 31px;
-}
-
-.registrationButton
-{
-	background-color: #183153;
-	color: #E4E2F9;
-	border-radius: 8px;
-	width: 196px;
-    height: 35px;
-	margin: 20px;
-	cursor: pointer;} */
-
-    .image-uploader-container {
-        text-align: center;
-        padding: 20px;
-      }
-      
-      .upload-form {
-        display: flex;
-        flex-direction: column;
-        align-items: center;
-      }
-      
-      .form-row {
-        display: flex;
-        align-items: center;
-        margin-bottom: 10px;
-      }
-      
-      .file-upload-label {
-        background-color: #007bff;
-        color: #fff;
-        padding: 10px 20px;
-        border: none;
-        border-radius: 5px;
-        cursor: pointer;
-        font-size: 16px;
-        transition: background-color 0.3s;
-      }
-      
-      .file-upload-label:hover {
-        background-color: #0056b3;
-      }
-      
-      .upload-form input[type="file"] {
-        display: none;
-      }
-      
-      .upload-form input[type="text"] {
-        width: 100%;
-        padding: 10px;
-        border: 1px solid #ccc;
-        border-radius: 5px;
-        font-size: 16px;
-        flex: 1; /* Para que ocupe el espacio restante */
-        margin-right: 10px;
-      }
-      
-      .upload-form button {
-        padding: 10px 20px;
-        background-color: #007bff;
-        color: #fff;
-        border: none;
-        border-radius: 5px;
-        cursor: pointer;
-        font-size: 16px;
-        transition: background-color 0.3s;
-      }
-      
-      .upload-form button:hover {
-        background-color: #0056b3;
-      }
-      
-      .card-container {
-        display: flex;
-        flex-wrap: wrap;
-        justify-content: center;
-        margin-top: 20px;
-      }
-      
-      .card {
-        width: 200px;
-        margin: 10px;
-        padding: 10px;
-        border: 1px solid #ccc;
-        border-radius: 5px;
-        box-shadow: 0 0 5px rgba(0, 0, 0, 0.2);
-      }
-      
-      .card img {
-        max-width: 100%;
-        height: auto;
-      }
-      
-      .card h3 {
-        margin-top: 10px;
-        font-size: 18px;
-        font-weight: bold;
-      }
-      

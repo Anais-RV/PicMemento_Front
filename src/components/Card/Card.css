@@ -6,18 +6,56 @@
     padding: 16px;
     text-align: center;
     transition: transform 0.2s;
-    width: 300px;
+    width: 100%;
+    max-width: 300px;
     margin: 16px;
+    position: relative;
+    box-sizing: border-box;
 }
-
 .cardImage {
     max-width: 100%;
     height: auto;
     border-radius: 5px;
 }
-
 .imageText {
     font-size: 1.2em;
-    margin: 8px 0;
+    margin: 20px auto;
+    font-family: 'Playpen Sans', cursive;
+    /* overflow: scroll; */
+    white-space: normal;
 }
-
+.edit{
+    margin-top: 5px;
+    border-radius: 5px;
+    width: 100%;
+    padding: 5px;
+    border: 1px solid #ccc;
+    box-sizing: border-box;
+}
+.save{
+    background-color: #f1b1b5;
+    width: 100%;
+    max-width: 100px;
+    margin-top: 5px;
+    border: none;    
+    padding: 5px;
+    border-radius: 5px;
+    font-family: 'Playpen Sans', cursive;
+    font-size: 14px;
+    cursor: pointer;
+}
+.cardIcons {
+    display: flex;
+    flex-direction: row;
+    justify-content: flex-start;
+    align-items: center;
+    position: absolute; 
+    bottom: 10px; 
+    width: 100%; 
+}
+.icon-pointer {
+    cursor: pointer;
+    margin: 1% 2%;
+    width: 20px;
+    height: 20px;
+}
