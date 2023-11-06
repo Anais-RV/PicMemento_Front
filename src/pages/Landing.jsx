@@ -1,95 +1,73 @@
 // import { useState } from 'react';
-// import { ToastContainer, toast } from 'react-toastify';
+// import { toast } from 'react-toastify';
 // import 'react-toastify/dist/ReactToastify.css';
-// import "./Landing.css";
+// import Card from '../components/Card/Card';
+// import './Landing.css';
 
 // function Landing() {
-//   const [formData, setFormData] = useState({
-//     title: '',
-//   });
+//   const [selectedFile, setSelectedFile] = useState(null);
+//   const [title, setTitle] = useState('');
+//   const [imageList, setImageList] = useState([]);
 
-//   const [error, setError] = useState(null);
-//   const [success, setSuccess] = useState(false);
-//   const [image, setImage] = useState(null);
-
-//   const handleChange = (e) => {
-//     const { name, value } = e.target;
-//     setFormData({ ...formData, [name]: value });
-//   };
-
-//   const handleImageChange = (e) => {
-//     const selectedFile = e.target.files[0];
-//     setImage(selectedFile);
-//   };
-
-//   const handleSubmit = async (e) => {
-//     e.preventDefault();
-
-//     if (!image || !formData.title) {
-//       setError('Por favor, complete todos los campos.');
-//       return;
+//   const handleFileChange = (e) => {
+//     const file = e.target.files[0];
+//     if (file) {
+//       setSelectedFile(file);
 //     }
+//   };
 
-//     const formDataToSend = new FormData();
-//     formDataToSend.append('title', formData.title);
-//     formDataToSend.append('image', image);
+//   const handleTitleChange = (e) => {
+//     setTitle(e.target.value);
+//   };
 
-//     try {
-//       const response = await fetch('http://localhost:8000/upload', {
-//         method: 'POST',
-//         body: formDataToSend,
+//   const handleUpload = () => {
+//     if (selectedFile && title) {
+//       const newImage = {
+//         file: URL.createObjectURL(selectedFile),
+//         title: title,
+//       };
+//       setImageList([...imageList, newImage]);
+//       setSelectedFile(null);
+//       setTitle('');
+//       toast.success('Imagen añadida con éxito', {
+//         position: 'bottom-right',
+//         autoClose: 3000,
 //       });
-
-//       if (response.ok) {
-//         setSuccess(true);
-//         setError(null);
-//         toast.success('Imagen enviada con éxito');
-//       } else {
-//         setError('Error al enviar la imagen.');
-//       }
-//     } catch (error) {
-//       setError('Error de red');
+//     } else {
+//       toast.error('Por favor, seleccione una imagen y añada un título');
 //     }
 //   };
 
 //   return (
-//     <>
-//       <ToastContainer />
-//       <div className='main-content'>
-//         <div className='welcomeText'>
-//           <h1 className='greetingRegistration'>Subir imagen</h1>
+//     <div className="image-uploader-container">
+//       <div className="upload-form">
+//         <div className="form-row">
+//           <label className="file-upload-label" htmlFor="fileInput">
+//             Elige tu recuerdo
+//           </label>
+//           <input
+//             type="file"
+//             id="fileInput"
+//             onChange={handleFileChange}
+//             required
+//           />
 //         </div>
-//         <form className='registrationForm' onSubmit={handleSubmit}>
-//           <div className='formGroup'>
-//             <label className='identifier'>Título de la imagen</label>
-//             <input
-//               className='registrationBox'
-//               type='text'
-//               name='title'
-//               value={formData.title}
-//               onChange={handleChange}
-//               required
-//             />
-//           </div>
-//           <div className='formGroup'>
-//             <label className='identifier'>Seleccionar imagen</label>
-//             <label htmlFor='imageInput' className='registrationBox' id='regis'>
-//               Elegir archivo
-//             </label>
-//             <input
-//               id='imageInput'
-//               type='file'
-//               onChange={handleImageChange}
-//               required
-//               style={{ display: 'none' }}
-//             />
-//           </div>
-//           <button className='registrationButton' type='submit'>
-//             Enviar Imagen
-//           </button>
-//         </form>
+//         <div className="form-row">
+//           <input
+//             type="text"
+//             placeholder="Escoge un título"
+//             value={title}
+//             onChange={handleTitleChange}
+//           />
+//           <button onClick={handleUpload}>Guardar</button>
+//         </div>
 //       </div>
-//     </>
+//       <div className="card-container">
+//         {imageList.map((image, index) => (
+//           <Card key={index} img_card={image.file} text={image.title} />
+//         ))}
+//       </div>
+//     </div>
 //   );
 // }
 
@@ -100,6 +78,8 @@ import { toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 import Card from '../components/Card/Card';
 import './Landing.css';
+
+const API_URL = "http://localhost:8000";
 
 function Landing() {
   const [selectedFile, setSelectedFile] = useState(null);
@@ -117,23 +97,41 @@ function Landing() {
     setTitle(e.target.value);
   };
 
-  const handleUpload = () => {
+  const handleUpload = async () => {
     if (selectedFile && title) {
-      const newImage = {
-        file: URL.createObjectURL(selectedFile),
-        title: title,
-      };
-      setImageList([...imageList, newImage]);
-      setSelectedFile(null);
-      setTitle('');
-      toast.success('Imagen añadida con éxito', {
-        position: 'bottom-right',
-        autoClose: 3000,
-      });
+      try {
+        const formData = new FormData();
+        formData.append('image', selectedFile);
+        formData.append('title', title);
+  
+        const response = await fetch(`${API_URL}/images`, {
+          method: 'POST',
+          body: formData,
+        });
+  
+        if (response.ok) {
+          const newImage = await response.json();
+          // Asegúrate de incluir la propiedad 'img_card' con la URL de la imagen
+          newImage.img_card = newImage.image_url;
+  
+          // Agrega el objeto de imagen a la lista
+          setImageList([...imageList, newImage]);
+          setSelectedFile(null);
+          setTitle('');
+          toast.success('Imagen añadida con éxito', {
+            position: 'bottom-right',
+            autoClose: 3000,
+          });
+        } else {
+          throw new Error('Failed to upload image');
+        }
+      } catch (error) {
+        console.error('Error al cargar la imagen:', error);
+      }
     } else {
       toast.error('Por favor, seleccione una imagen y añada un título');
-    }
-  };
+  }
+  }
 
   return (
     <div className="image-uploader-container">
@@ -160,13 +158,19 @@ function Landing() {
         </div>
       </div>
       <div className="card-container">
-        {imageList.map((image, index) => (
-          <Card key={index} img_card={image.file} text={image.title} />
-        ))}
-      </div>
+  {imageList.map((image) => (
+    <Card
+      key={image.id}
+      img_card={image.image_url}
+      text={image.title}
+      imageId={image.id}
+      setImageList={setImageList} 
+    />
+  ))}
+</div>
+
     </div>
   );
 }
 
 export default Landing;
-
