@@ -58,3 +58,22 @@
     width: 20px;
     height: 20px;
 }
+
+.custom-toast {
+background: whitesmoke;
+border: 1px solid #e0e0e0;
+border-radius: 5px;
+box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+padding: 16px;
+text-align: center;
+white-space: normal;
+}
+
+.custom-toast button:hover {
+background-color: #caafe4;
+}
+
+.custom-toast .Toastify__progress-bar {
+background-color: #f1b1b5; 
+}
+

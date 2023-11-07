@@ -63,3 +63,46 @@
     margin-top: 5vh;
     margin-bottom: 5vh;
 }
+
+/* Estilo para el botón "Elige tu Recuerdo" cuando no se ha seleccionado una imagen */
+.file-upload-label {
+    background-color: #f1b1b5;
+    color: black;
+    font-family: 'Playpen Sans', cursive;
+    padding: 10px 20px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 16px;
+    transition: background-color 0.3s;
+  }
+  
+  /* Estilo para el botón "Elige tu Recuerdo" cuando se ha seleccionado una imagen */
+  .file-upload-label.image-loaded {
+    background-color: #f0898f; /* Cambia el color de fondo al seleccionar una imagen */
+  }
+  
+  /* Estilo para el texto dentro del botón "Elige tu Recuerdo" */
+  .file-upload-label::after {
+    content: attr(data-text); /* Muestra el contenido del atributo "data-text" */
+    position: absolute;
+    left: 20px; /* Ajusta la posición del texto dentro del botón */
+  }
+  
+  /* Estilo para la notificación de imagen cargada */
+  .custom-toast {
+    background-color: #f1b1b5;
+    color: black;
+    font-family: 'Playpen Sans', cursive;
+    font-size: 16px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.3s;
+  }
+  
+  /* Estilo para la notificación de imagen cargada al pasar el mouse */
+  .custom-toast:hover {
+    background-color: #f0898f;
+  }
+  

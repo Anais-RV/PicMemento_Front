@@ -1,13 +1,14 @@
 import { useState } from "react";
+import { toast } from 'react-toastify';
+import "react-toastify/dist/ReactToastify.css";
 import "./Card.css";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import PropTypes from "prop-types";
-import { faTrash, faEdit } from "@fortawesome/free-solid-svg-icons";
+import { faTrash, faEdit, faHeartCircleCheck } from "@fortawesome/free-solid-svg-icons";
 
 const API_URL = "http://localhost:8000";
 
 function Card(props) {
-  console.log("Valor de props.imageId:", props.imageId);
   const [isEditing, setIsEditing] = useState(false);
   const [editedText, setEditedText] = useState(props.text);
 
@@ -16,18 +17,24 @@ function Card(props) {
       "¿Estás seguro de que deseas eliminar la imagen para siempre?"
     );
     if (!userConfirmed) return;
-  
+
     try {
       const response = await fetch(`${API_URL}/images/${id}`, { method: "DELETE" });
       if (response.ok) {
-        // Elimina la imagen de la lista en el frontend
+        
         props.setImageList((imageList) => imageList.filter((image) => image.id !== id));
+        toast.success("Imagen eliminada con éxito", {
+          position: "bottom-right",
+          autoClose: 3000,
+          className: "custom-toast",
+          icon: <FontAwesomeIcon icon={faHeartCircleCheck} size="1x" color="black" />
+        });
       } else {
         throw new Error("Failed to delete image");
       }
     } catch (error) {
-      console.error("Error eliminando la imagen:",error);
-  }
+      console.error("Error eliminando la imagen:", error);
+    }
   };
 
   const handleEditClick = () => {
@@ -35,12 +42,7 @@ function Card(props) {
   };
 
   const handleSaveClick = async () => {
-    console.log("Guardar botón clicado");
-    console.log("ID de imagen:", props.imageId);
-  
-    const url = `${API_URL}/images/${props.imageId}`; // Construye la URL
-    console.log("URL de la solicitud:", url); // Muestra la URL en la consola
-
+    const url = `${API_URL}/images/${props.imageId}`;
     const formData = new FormData();
     formData.append('title', editedText);
 
@@ -50,22 +52,20 @@ function Card(props) {
     };
 
     try {
-      const response = await fetch(url, requestOptions); // Utiliza el formData en el cuerpo
-
+      const response = await fetch(url, requestOptions);
       if (response.ok) {
-        setIsEditing(false); // Cambia al modo de visualización
+        setIsEditing(false);
+        toast.success("Título de la imagen guardado con éxito", {
+          position: "bottom-right",
+          autoClose: 3000,
+        });
       } else {
         throw new Error("Failed to save image title");
       }
     } catch (error) {
       console.error("Error al guardar el título:", error);
     }
-};
-
-
-
-  
-  
+  };
 
   const handleTitleChange = (event) => {
     setEditedText(event.target.value);
@@ -101,12 +101,17 @@ function Card(props) {
       </div>
     </div>
   );
-      }
+}
 
 Card.propTypes = {
-  img_card: PropTypes.string, 
+  img_card: PropTypes.string,
   text: PropTypes.string,
   imageId: PropTypes.number,
-  setImageList: PropTypes.func, 
+  setImageList: PropTypes.func,
 };
+
 export default Card;
+
+
+
+
